@@ -24,47 +24,42 @@ def TaskSelection():
 
 ###################################################
 def ConnectingWordsToAString():
-    print('Введите количество слов.')
-    Number = input()
-    pattern1 = re.fullmatch(r"[0-9]{1,}", Number)
-    if pattern1:
-        Number = int(Number)
-    else:
-        ConnectingWordsToAString()
-
+    while 1 == 1:
+        Number = input('Введите количество слов. ')
+        if Number.isdigit():
+            Number = int(Number)
+            break
+        else:
+            print('Вы ввели не число. Введите число!')
     counter = 1
-    str = ''
+    line = ''
     while counter <= Number:
-        print('Введите ', counter, ' слово.')
+        print('Введите', counter, 'слово.')
         Word = input()
-        pattern2 = re.fullmatch(r"[A-Za-zА-Яа-яЁё\-]{1,}", Word)
-        if pattern2:
+        pattern = re.fullmatch(r"[A-Za-zА-Яа-яЁё\-]{1,}", Word)
+        if pattern:
             counter = counter + 1
-            str = str + Word + ' '
-    print(str.rstrip())
+            line = line + Word + ' '
+    print(line.rstrip())
+
 ###################################################
 
 def ConnectingWordsToAStringStop():
-    print('Введите количество слов.')
-    Number = input()
-    pattern1 = re.fullmatch(r"[0-9]{1,}", Number)
-    if pattern1:
-        Number = int(Number)
-    else:
-        ConnectingWordsToAStringStop()
-
+    line = ''
     counter = 1
-    str = ''
-    while counter <= Number:
-        print('Введите ', counter, ' слово.')
+    while 1 == 1:
+        print('Введите', counter, 'слово.')
         Word = input()
-        if Word == 'stop':
+        if Word.lower() == 'stop':
             break
-        pattern2 = re.fullmatch(r"[A-Za-zА-Яа-яЁё\-]{1,}", Word)
-        if pattern2:
+        pattern = re.fullmatch(r"[A-Za-zА-Яа-яЁё\-]{1,}", Word)
+        if pattern is not None:
             counter = counter + 1
-            str = str + Word + ' '
-    print(str.rstrip())
+            line = line + Word + ' '
+        else:
+            print('Ошибка ввода!')
+    print(line.rstrip())
+
 ###################################################
 
 def RareWords():
@@ -74,7 +69,7 @@ def RareWords():
         pattern = re.fullmatch(r"[A-Za-zА-Яа-яЁё\-]{1,}", Word)
         if pattern:
             symbol = 'ф'
-            if symbol in Word:
+            if symbol in Word.lower():
                 print("Ого! Это редкое слово!")
             else:
                 print("Эх, это не очень редкое слово...")
@@ -84,26 +79,27 @@ def RareWords():
 ###################################################
 
 def MathForKids():
-    counter = 0
-    while counter <= 3:
+    counterFalse = 0
+    counterTrue = 0
+    while counterFalse < 3:
         num1 = random.randint(1, 10)
         num2 = random.randint(1, 10)
-        #str2 = str(num1) + ' + ' + str(num2) + ' = '
-        str1 = str(55)
-        str2 = str(44)
-        print(num1)
-        print(num2)
-        print(str1)
-        print(str2)
-        Number = input(str2)
-        if Number.isdigit():
-            print('Введите ', counter, ' слово.')
-        Word = input()
-        pattern2 = re.fullmatch(r"[A-Za-zА-Яа-яЁё\-]{1,}", Word)
-        if pattern2:
-            counter = counter + 1
-            str = str + Word + ' '
-    print(str.rstrip())
+        str2 = str(num1) + ' + ' + str(num2) + ' = '
+        while 0 < 1:
+            Number = input(str2)
+            if Number.isdigit():
+                Number = int(Number)
+                break
+            else:
+                print('Вы ввели не число. Введите число!')
+        if (num1 + num2) == Number:
+            counterTrue = counterTrue + 1
+            print('Правильно!')
+        else:
+            counterFalse = counterFalse + 1
+            print('Ответ неверный.')
+    print('Игра окончена. Правильных ответов: ', str(counterTrue))
+
 ###################################################
 
 #Основная программа
