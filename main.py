@@ -40,6 +40,8 @@ def ConnectingWordsToAString():
         if pattern:
             counter = counter + 1
             line = line + Word + ' '
+        else:
+            print('Ошибка ввода!')
     print(line.rstrip())
 
 ###################################################
@@ -63,9 +65,12 @@ def ConnectingWordsToAStringStop():
 ###################################################
 
 def RareWords():
-    #while counter <= Number:
+    print('Чтобы остановить игру введите слово "stop"')
+    while 1 == 1:
         print('Введите слово.')
         Word = input()
+        if Word.lower() == 'stop':
+            break
         pattern = re.fullmatch(r"[A-Za-zА-Яа-яЁё\-]{1,}", Word)
         if pattern:
             symbol = 'ф'
@@ -74,7 +79,7 @@ def RareWords():
             else:
                 print("Эх, это не очень редкое слово...")
         else:
-            RareWords()
+            print('Ошибка ввода!')
 
 ###################################################
 
